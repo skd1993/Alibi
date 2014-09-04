@@ -1,0 +1,213 @@
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<html>
+ <head>
+ <title>Alibi</title> 
+ <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
+ <link href="style.css" rel="stylesheet" type="text/css" />
+ <script type='text/javascript' src='js/jquery-1.10.2.js'></script>
+  <script type='text/javascript' src="js/jQueryRotate.js"></script>
+  <script type='text/javascript' src="js/jquery.knob.js"></script>
+  <script type='text/javascript' src='js/script2.js'></script>
+
+
+  </head> 
+<body  style="font color:white">
+<div id="wrapper">
+<div id="header">
+<div id="header_left">
+    <strong>STATUS :   &nbsp;</strong>
+    <img src="images/off.png" width="30" height="30"  alt="on_off_status" id="on_off_status" onclick="diffImage(this)"/><strong> ON/OFF </strong>&nbsp;
+    <img src="images/off.png" width="30" height="30"  alt="hold_status" id="hold_status" onclick="diffImage(this)"/><strong> HOLD</strong></div>
+<div id="header_right"><strong>MACHINE</strong></div>
+</div>
+ 
+ 
+<div id="container"> 
+ <div id="left_col">
+	<table width="100%" height="555" border="1" cellpadding="20">
+		<tr>
+			<td style="text-align: center; font-size: 24px; color: #999;"><strong>REGULATORS </strong></td>
+	  </tr>
+		<tr>
+			<td>
+			<fieldset>
+			<legend style="text-align: right; font-size: 24px;"><strong>VOLTAGE CONTROL</strong></legend>
+            <table>
+            <tr>
+            <td>
+
+			<div id="knob1">
+			<input class="cs_knob" value="0"   > 
+			</div>
+
+			<!-- <img class="imgA" src="images/dial-back.png" onmousedown='return false;' ondragstart='return false;'>
+            <div id="inner1" class="draggable1"><img class="imgA" src="images/pointer.png"  ondragstart='return false;' onmousedown="down1();"></div> -->
+            </td>
+            <td align="right">
+            <div id="on_off">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><img src="images/off.png" onclick="diffImage(this)" width=30 height=30></a><strong><span style="font-size: 24px" alt="voltage">ON/OFF</span></strong>
+            </div>
+            </td>
+            </tr>
+            </table>
+            </fieldset>
+            
+            </td>
+            </tr>
+            <tr>
+            <td>
+			<fieldset>
+			<legend style="text-align: right; font-size: 24px;"><strong>TIME OUT</strong></legend>
+            <table>
+            <tr>
+            <td>
+
+            <div id="knob2">
+            <input class="cs_knob2" value="0">
+            </div>
+
+			<!-- <div id = "outer2">
+			<img class="imgA" src="images/dial-back.png" onmousedown='return false;' ondragstart='return false;'>
+            <div id="inner2" class="draggable2"><img class="imgA" src="images/pointer.png"  ondragstart='return false;' onmousedown="down2();"></div>
+            </div> -->
+
+            </td>
+            <td align="right">
+            <div id="on_off">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><img src="images/off.png" onclick="diffImage(this)" width=30 height=30></a><strong><span style="font-size: 24px" alt="timeout">ON/OFF</span></strong>
+            </div>
+            </td>
+            </tr>
+            </table>
+			</fieldset>
+			</td>
+		</tr>
+	</table>
+</div><!--end left_col-->
+
+ <div id="right_col">
+	<table width="100%" height="555" border="2" cellpadding="20">
+		<tr >
+			<!-- <td align="center"></br><img src="images/level.png" id="level"></td>-->
+
+			<td align="center">
+			<fieldset>
+			<legend style="text-align: right; font-size: 24px;"><strong>WATER LEVEL</strong></legend>
+			<div id="level">
+            <input class="level" value="0">
+            </div>
+            </fieldset>
+			</td>
+
+		</tr>
+		<tr>
+		<td>
+		
+			<img src="images/warning2.png" style="width: 120px; float: left; margin-bottom: 15px; margin-right: 20px;" id="warning">
+			<a href="#"><img src="images/off.png" style="width: 40px;  margin-right: 3px;" id="empty"></a> <strong><span style="font-size: 24px">EMPTY</span></strong></br></br></br>
+			<a href="#"><img src="images/off.png" style="width: 40px; margin-bottom: 15px; margin-right: 3px;" id="full"></a> <strong><span style="font-size: 24px">FULL</span></strong>
+			
+		</td>
+		</tr>
+ 	</table> 
+</div><!--end right_col--> 
+
+<div id="page_content">
+	<table width="100%" height="555" border="2" cellpadding="20" >
+		<tr>
+		<td height="197" colspan="2"><div style="text-align: center;"><img src="images/logo.png"></div> </td>
+		</tr>
+		<tr>
+			<td height="321" colspan="2"><b><p>&nbsp;</p>
+			  <p><span style="color: #0CF"><strong style="text-align: center">WELCOME</strong></span><strong style="text-align: center"> <span style="color: #FFF">USERNAME</span></strong></p>
+			  <p><span style="color: #0CF"><strong>DEVICE NAME:</strong></span><strong> <span style="color: #FFF">ABC</span></strong></p>
+			  <p><span style="color: #0CF"><strong>DATE:</strong></span><strong> <span style="color: #FFF">01/09/2014</span></strong></p>
+			  <p><strong style="color: #FFF; font-size: medium;">CONTROL YOUR DEVICE </br>FROM HERE.</strong></p>
+			  <p>&nbsp;</p></td>
+			
+		</tr>
+	</table> 
+ </div>
+<!--end page_content--></div>
+</div>
+<script type="text/javascript">
+
+
+
+$(".cs_knob").knob({
+min : 0, 
+max : 100, 
+step : 1, 
+angleOffset : -135, 
+angleArc : 270, 
+stopper : true, 
+readOnly : true, 
+cursor : false,  
+lineCap : 'butt', 
+thickness : '0.4', 
+width : 130,
+height : 130,
+fgColor : '#FF0000',
+inputColor : '#00CCFF',
+font : 'Arial',
+fontWeight : 'bold', 
+bgColor : '#00FFFF', 
+displayPrevious : true,
+'draw' : function () { 
+        $(this.i).val(this.cv + '%')
+      }
+});
+
+$(".cs_knob2").knob({
+min : 0, 
+max : 100, 
+step : 1, 
+angleOffset : -135, 
+angleArc : 270, 
+stopper : true, 
+readOnly : true, 
+cursor : false,  
+lineCap : 'butt', 
+thickness : '0.4', 
+width : 130,
+height : 130,
+fgColor : '#FF0000',
+inputColor : '#00CCFF',
+font : 'Arial',
+fontWeight : 'bold', 
+bgColor : '#00FFFF', 
+displayPrevious : true,
+/*'draw' : function () { 
+        $(this.i).val(this.cv + '%')
+      }*/
+});
+
+$(".level").knob({
+min : 0, 
+max : 100, 
+step : 1, 
+stopper : true, 
+readOnly : true, 
+cursor : false,  
+lineCap : 'butt', 
+thickness : '0.4', 
+width : 270,
+height : 270,
+fgColor : '#0000FF',
+inputColor : '#00CCFF',
+font : 'Arial',
+fontWeight : 'bold', 
+bgColor : '#00FFFF', 
+displayPrevious : true,
+'draw' : function () { 
+        $(this.i).val(this.cv + '%')
+      }
+
+});
+
+
+
+
+</script>
+</body> 
+ </html>
