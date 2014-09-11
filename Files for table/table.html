@@ -1,0 +1,39 @@
+
+<script type="text/javascript">
+	window.onload=function(){
+	var tfrow = document.getElementById('tfhover').rows.length;
+	var tbRow=[];
+	for (var i=1;i<tfrow;i++) {
+		tbRow[i]=document.getElementById('tfhover').rows[i];
+		tbRow[i].onmouseover = function(){
+		  this.style.backgroundColor = '#ffffff';
+		};
+		tbRow[i].onmouseout = function() {
+		  this.style.backgroundColor = '#d4e3e5';
+		};
+	}
+};
+
+
+function change( el )
+{
+    if ( el.value === "On" )
+        el.value = "Off";
+    else
+        el.value = "On";
+}
+
+</script>
+
+<html>
+<head>
+ <link href="table.css" rel="stylesheet" type="text/css" />
+ </head>
+ <body>
+<table id="tfhover" class="tftable" border="1">
+<tr><th>SERIAL No.</th><th>MACHINE NAME</th><th>MACHINE STATUS</th><th>WATER LEVEL</th></tr
+<tr><td>1</td><td><a href="#">Machine1</a></td><td><input type="button" class="button" value="On" onclick="return change(this);" /></td><td>40%</td></tr>
+<tr><td>2</td><td><a href="#">Machine2</a></td><td><div id="button"><input type="button" class="button" value="On" onclick="return change(this);" /></div></td><td>60%</td></tr>
+</table>
+</body>
+</html>

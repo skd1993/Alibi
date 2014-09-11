@@ -4,20 +4,18 @@
  <title>Alibi</title> 
  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
  <link href="style.css" rel="stylesheet" type="text/css" />
- <script type='text/javascript' src='js/jquery-1.10.2.js'></script>
-  <script type='text/javascript' src="js/jQueryRotate.js"></script>
-  <script type='text/javascript' src="js/jquery.knob.js"></script>
+  <script type='text/javascript' src='js/jquery-1.10.2.js'></script>
+  <script type='text/javascript' src='js/jquery.knob.js'></script>
+  <script type='text/javascript' src='js/jstorage.js'></script>
   <script type='text/javascript' src='js/script2.js'></script>
-
-
-  </head> 
+</head>
 <body  style="font color:white">
 <div id="wrapper">
 <div id="header">
 <div id="header_left">
     <strong>STATUS :   &nbsp;</strong>
-    <img src="images/off.png" width="30" height="30"  alt="on_off_status" id="on_off_status" onclick="diffImage(this)"/><strong> ON/OFF </strong>&nbsp;
-    <img src="images/off.png" width="30" height="30"  alt="hold_status" id="hold_status" onclick="diffImage(this)"/><strong> HOLD</strong></div>
+    <img src="images/off.png" width="30" height="30"  alt="on_off_status" id="on_off_status" onclick="diffImage(this);" onload="showImage1(this);"/><strong> ON/OFF</strong>&nbsp;
+    <img src="images/off.png" width="30" height="30"  alt="hold_status" id="hold_status" onclick="diffImage(this);" onload="showImage2(this);"/><strong> HOLD</strong></div>
 <div id="header_right"><strong>MACHINE</strong></div>
 </div>
  
@@ -26,8 +24,8 @@
  <div id="left_col">
 	<table width="100%" height="555" border="1" cellpadding="20">
 		<tr>
-			<td style="text-align: center; font-size: 24px; color: #999;"><strong>REGULATORS </strong></td>
-	  </tr>
+			<td style="text-align: center; font-size: 24px; color: #999;"><strong>REGULATORS</strong></td>
+	  	</tr>
 		<tr>
 			<td>
 			<fieldset>
@@ -36,16 +34,14 @@
             <tr>
             <td>
 
-			<div id="knob1">
-			<input class="cs_knob" value="0"   > 
+			<div id="knob1" onmouseup="redirect()">
+			<input class="cs_knob" value="0" id="knob1_val" disabled> 
 			</div>
 
-			<!-- <img class="imgA" src="images/dial-back.png" onmousedown='return false;' ondragstart='return false;'>
-            <div id="inner1" class="draggable1"><img class="imgA" src="images/pointer.png"  ondragstart='return false;' onmousedown="down1();"></div> -->
             </td>
             <td align="right">
             <div id="on_off">
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><img src="images/off.png" onclick="diffImage(this)" width=30 height=30></a><strong><span style="font-size: 24px" alt="voltage">ON/OFF</span></strong>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><img src="images/off.png"  alt="voltage" width=30 height=30 onclick="diffImage(this);" onload="showImage3(this)"></a><strong><span style="font-size: 24px">ON/OFF</span></strong>
             </div>
             </td>
             </tr>
@@ -63,18 +59,12 @@
             <td>
 
             <div id="knob2">
-            <input class="cs_knob2" value="0">
+            <input class="cs_knob2" value="0" id="knob2_val" disabled>
             </div>
-
-			<!-- <div id = "outer2">
-			<img class="imgA" src="images/dial-back.png" onmousedown='return false;' ondragstart='return false;'>
-            <div id="inner2" class="draggable2"><img class="imgA" src="images/pointer.png"  ondragstart='return false;' onmousedown="down2();"></div>
-            </div> -->
-
-            </td>
+			</td>
             <td align="right">
             <div id="on_off">
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><img src="images/off.png" onclick="diffImage(this)" width=30 height=30></a><strong><span style="font-size: 24px" alt="timeout">ON/OFF</span></strong>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><img src="images/off.png" alt="timeout" onclick="diffImage(this);" width=30 height=30  onload="showImage4(this);"></a><strong><span style="font-size: 24px">ON/OFF</span></strong>
             </div>
             </td>
             </tr>
@@ -132,8 +122,6 @@
 </div>
 <script type="text/javascript">
 
-
-
 $(".cs_knob").knob({
 min : 0, 
 max : 100, 
@@ -141,7 +129,7 @@ step : 1,
 angleOffset : -135, 
 angleArc : 270, 
 stopper : true, 
-readOnly : true, 
+readOnly : false, 
 cursor : false,  
 lineCap : 'butt', 
 thickness : '0.4', 
@@ -154,8 +142,9 @@ fontWeight : 'bold',
 bgColor : '#00FFFF', 
 displayPrevious : true,
 'draw' : function () { 
-        $(this.i).val(this.cv + '%')
+        $(this.i).val(this.cv+ 'V')
       }
+
 });
 
 $(".cs_knob2").knob({
@@ -165,7 +154,7 @@ step : 1,
 angleOffset : -135, 
 angleArc : 270, 
 stopper : true, 
-readOnly : true, 
+readOnly : false, 
 cursor : false,  
 lineCap : 'butt', 
 thickness : '0.4', 
